@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Instalaciones TPV Clarel</title>
+<meta name="theme-color" content="#0f172a" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icon.svg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="app-header">
+  <h1>Instalaciones TPV Clarel</h1>
+</header>
+
+<main id="app">
+
+  <!-- ===== VISTA LISTA ===== -->
+  <section id="view-list" class="view">
+    <div class="toolbar">
+      <button id="btn-new" class="btn btn-primary">+ Nuevo registro</button>
+    </div>
+    <ul id="record-list" class="record-list"></ul>
+    <p id="empty-msg" class="empty-msg" hidden>Todavía no hay registros guardados. Pulsa "Nuevo registro" para crear el primero.</p>
+  </section>
+
+  <!-- ===== VISTA FORMULARIO ===== -->
+  <section id="view-form" class="view" hidden>
+    <div class="toolbar">
+      <button id="btn-back" class="btn btn-ghost">&larr; Volver</button>
+      <button id="btn-delete" class="btn btn-danger" hidden>Eliminar</button>
+    </div>
+
+    <form id="record-form">
+      <input type="hidden" id="f-id" />
+
+      <fieldset>
+        <legend>Datos tienda</legend>
+        <label>Número de tienda
+          <input type="text" id="f-numeroTienda" required />
+        </label>
+        <label>Dirección
+          <textarea id="f-direccion" required></textarea>
+        </label>
+        <label>Población
+          <input type="text" id="f-poblacion" required />
+        </label>
+        <label>Fecha
+          <input type="date" id="f-fecha" required />
+        </label>
+        <label>Estado de la instalación
+          <select id="f-estadoInstalacion" required>
+            <option value="">-- Selecciona --</option>
+            <option value="Completado">Completado</option>
+            <option value="Interrumpida">Interrumpida</option>
+          </select>
+        </label>
+        <label>Motivo de la interrupción <span class="opt">(opcional)</span>
+          <textarea id="f-motivoInterrupcion"></textarea>
+        </label>
+        <label>¿Cómo se realiza la instalación?
+          <select id="f-comoRealiza" required>
+            <option value="">-- Selecciona --</option>
+            <option value="Tienda Abierta">Tienda Abierta</option>
+            <option value="Tienda Cerrada">Tienda Cerrada</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset class="caja-fieldset">
+        <legend>Caja 1</legend>
+        <label>Número de serie TPV instalada
+          <input type="text" id="f-caja1-tpv" required />
+        </label>
+        <label>Número de serie de pantalla instalada
+          <input type="text" id="f-caja1-pantalla" required />
+        </label>
+        <label>¿Cómo está conectado el visor de cliente?
+          <select id="f-caja1-visor" required>
+            <option value="">-- Selecciona --</option>
+            <option value="Por Usb BA64">Por Usb BA64</option>
+            <option value="Por puerto COM BA63">Por puerto COM BA63</option>
+            <option value="No tiene visor">No tiene visor</option>
+          </select>
+        </label>
+        <label>¿Cómo está alimentada la impresora TM88?
+          <select id="f-caja1-impresora" required>
+            <option value="">-- Selecciona --</option>
+            <option value="Por transformador">Por transformador</option>
+            <option value="Por conversor al power USB">Por conversor al power USB</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset class="caja-fieldset">
+        <legend>Caja 2 <span class="opt">(opcional)</span></legend>
+        <label>Número de serie TPV instalada
+          <input type="text" id="f-caja2-tpv" />
+        </label>
+        <label>Número de serie de pantalla instalada
+          <input type="text" id="f-caja2-pantalla" />
+        </label>
+        <label>¿Cómo está conectado el visor de cliente?
+          <select id="f-caja2-visor">
+            <option value="">-- Selecciona --</option>
+            <option value="Por Usb BA64">Por Usb BA64</option>
+            <option value="Por puerto COM BA63">Por puerto COM BA63</option>
+            <option value="No tiene visor">No tiene visor</option>
+          </select>
+        </label>
+        <label>¿Cómo está alimentada la impresora TM88?
+          <select id="f-caja2-impresora">
+            <option value="">-- Selecciona --</option>
+            <option value="Por transformador">Por transformador</option>
+            <option value="Por conversor al power USB">Por conversor al power USB</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset class="caja-fieldset">
+        <legend>Caja 3 <span class="opt">(opcional)</span></legend>
+        <label>Número de serie TPV instalada
+          <input type="text" id="f-caja3-tpv" />
+        </label>
+        <label>Número de serie de pantalla instalada
+          <input type="text" id="f-caja3-pantalla" />
+        </label>
+        <label>¿Cómo está conectado el visor de cliente?
+          <select id="f-caja3-visor">
+            <option value="">-- Selecciona --</option>
+            <option value="Por Usb BA64">Por Usb BA64</option>
+            <option value="Por puerto COM BA63">Por puerto COM BA63</option>
+            <option value="No tiene visor">No tiene visor</option>
+          </select>
+        </label>
+        <label>¿Cómo está alimentada la impresora TM88?
+          <select id="f-caja3-impresora">
+            <option value="">-- Selecciona --</option>
+            <option value="Por transformador">Por transformador</option>
+            <option value="Por conversor al power USB">Por conversor al power USB</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Datos de instalación</legend>
+        <label>Hora de inicio
+          <input type="time" id="f-horaInicio" required />
+        </label>
+        <label>Hora de fin
+          <input type="time" id="f-horaFin" required />
+        </label>
+        <label>Nombre del técnico
+          <input type="text" id="f-nombreTecnico" required />
+        </label>
+        <label>Nombre de empleado/a
+          <input type="text" id="f-nombreEmpleado" required />
+        </label>
+      </fieldset>
+
+      <p class="hint">Las fotos de cada caja y las firmas no se pueden precargar: se hacen directamente en JotForm al enviar.</p>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar registro</button>
+      </div>
+    </form>
+  </section>
+
+</main>
+
+<!-- ===== BARRA INFERIOR AL SELECCIONAR UN REGISTRO ===== -->
+<div id="detail-bar" class="detail-bar" hidden>
+  <div class="detail-info">
+    <strong id="detail-title"></strong>
+    <span id="detail-sub"></span>
+  </div>
+  <div class="detail-actions">
+    <button id="btn-edit" class="btn btn-ghost">Editar</button>
+    <button id="btn-open-jotform" class="btn btn-primary">Abrir en JotForm</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
