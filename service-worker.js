@@ -1,4 +1,4 @@
-const CACHE = "tpv-clarel-v3";
+const CACHE = "tpv-clarel-v4";
 const ASSETS = [
   "./",
   "./index.html",
