@@ -130,6 +130,56 @@ textarea { min-height: 60px; resize: vertical; }
 .form-actions { margin: 16px 0 30px; }
 .form-actions .btn { width: 100%; }
 
+.field-with-scan {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.field-with-scan input { flex: 1; }
+.btn-scan {
+  margin-top: 6px;
+  flex-shrink: 0;
+  width: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.scanner-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.scanner-box {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+#scanner-video {
+  width: 100%;
+  max-height: 60vh;
+  border-radius: 12px;
+  background: #000;
+  object-fit: cover;
+}
+.scanner-status {
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0;
+}
+.scanner-box .btn { width: 100%; max-width: 220px; }
+
 .detail-bar {
   position: fixed;
   left: 0; right: 0; bottom: 0;
@@ -158,4 +208,5 @@ textarea { min-height: 60px; resize: vertical; }
   }
   input, select, textarea { background: #1b1f25; color: var(--text); border-color: var(--border); }
   .hint { background: #241d0e; border-color: #4a3c14; color: #e0c26a; }
+  .btn-scan { background: #1b1f25; }
 }

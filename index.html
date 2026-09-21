@@ -73,10 +73,16 @@
       <fieldset class="caja-fieldset">
         <legend>Caja 1</legend>
         <label>Número de serie TPV instalada
-          <input type="text" id="f-caja1-tpv" />
+          <div class="field-with-scan">
+            <input type="text" id="f-caja1-tpv" />
+            <button type="button" class="btn-scan" data-target="f-caja1-tpv" aria-label="Escanear código de barras">📷</button>
+          </div>
         </label>
         <label>Número de serie de pantalla instalada
-          <input type="text" id="f-caja1-pantalla" />
+          <div class="field-with-scan">
+            <input type="text" id="f-caja1-pantalla" />
+            <button type="button" class="btn-scan" data-target="f-caja1-pantalla" aria-label="Escanear código de barras">📷</button>
+          </div>
         </label>
         <label>¿Cómo está conectado el visor de cliente?
           <select id="f-caja1-visor">
@@ -98,10 +104,16 @@
       <fieldset class="caja-fieldset">
         <legend>Caja 2 <span class="opt">(opcional)</span></legend>
         <label>Número de serie TPV instalada
-          <input type="text" id="f-caja2-tpv" />
+          <div class="field-with-scan">
+            <input type="text" id="f-caja2-tpv" />
+            <button type="button" class="btn-scan" data-target="f-caja2-tpv" aria-label="Escanear código de barras">📷</button>
+          </div>
         </label>
         <label>Número de serie de pantalla instalada
-          <input type="text" id="f-caja2-pantalla" />
+          <div class="field-with-scan">
+            <input type="text" id="f-caja2-pantalla" />
+            <button type="button" class="btn-scan" data-target="f-caja2-pantalla" aria-label="Escanear código de barras">📷</button>
+          </div>
         </label>
         <label>¿Cómo está conectado el visor de cliente?
           <select id="f-caja2-visor">
@@ -123,10 +135,16 @@
       <fieldset class="caja-fieldset">
         <legend>Caja 3 <span class="opt">(opcional)</span></legend>
         <label>Número de serie TPV instalada
-          <input type="text" id="f-caja3-tpv" />
+          <div class="field-with-scan">
+            <input type="text" id="f-caja3-tpv" />
+            <button type="button" class="btn-scan" data-target="f-caja3-tpv" aria-label="Escanear código de barras">📷</button>
+          </div>
         </label>
         <label>Número de serie de pantalla instalada
-          <input type="text" id="f-caja3-pantalla" />
+          <div class="field-with-scan">
+            <input type="text" id="f-caja3-pantalla" />
+            <button type="button" class="btn-scan" data-target="f-caja3-pantalla" aria-label="Escanear código de barras">📷</button>
+          </div>
         </label>
         <label>¿Cómo está conectado el visor de cliente?
           <select id="f-caja3-visor">
@@ -183,6 +201,16 @@
   </div>
 </div>
 
+<!-- ===== ESCANER DE CODIGO DE BARRAS ===== -->
+<div id="scanner-overlay" class="scanner-overlay" hidden>
+  <div class="scanner-box">
+    <video id="scanner-video" playsinline muted></video>
+    <p id="scanner-status" class="scanner-status">Apunta al código de barras</p>
+    <button id="btn-scanner-cancel" type="button" class="btn btn-ghost">Cancelar</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

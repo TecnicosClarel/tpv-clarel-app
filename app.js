@@ -255,6 +255,59 @@ form.addEventListener("submit", async (e) => {
   showList();
 });
 
+/* ---------------- Escaner de codigo de barras ---------------- */
+
+const scannerOverlay = document.getElementById("scanner-overlay");
+const scannerVideo = document.getElementById("scanner-video");
+const scannerStatus = document.getElementById("scanner-status");
+
+let barcodeReader = null;
+let scannerTargetInput = null;
+
+async function openScanner(targetId) {
+  scannerTargetInput = document.getElementById(targetId);
+  if (!scannerTargetInput) return;
+
+  if (!window.ZXing) {
+    alert("No se pudo cargar el lector de códigos de barras. Comprueba tu conexión a internet e inténtalo de nuevo.");
+    return;
+  }
+
+  scannerStatus.textContent = "Apunta al código de barras...";
+  scannerOverlay.hidden = false;
+  barcodeReader = new ZXing.BrowserMultiFormatReader();
+
+  try {
+    await barcodeReader.decodeFromConstraints(
+      { video: { facingMode: { ideal: "environment" } } },
+      scannerVideo,
+      (result) => {
+        if (result) {
+          scannerTargetInput.value = result.getText();
+          closeScanner();
+        }
+      }
+    );
+  } catch (err) {
+    scannerStatus.textContent = "No se pudo acceder a la cámara. Revisa los permisos del navegador.";
+  }
+}
+
+function closeScanner() {
+  if (barcodeReader) {
+    barcodeReader.reset();
+    barcodeReader = null;
+  }
+  scannerOverlay.hidden = true;
+  scannerTargetInput = null;
+}
+
+document.querySelectorAll(".btn-scan").forEach((btn) => {
+  btn.addEventListener("click", () => openScanner(btn.dataset.target));
+});
+
+document.getElementById("btn-scanner-cancel").addEventListener("click", closeScanner);
+
 /* ---------------- Init ---------------- */
 
 (async function init() {
